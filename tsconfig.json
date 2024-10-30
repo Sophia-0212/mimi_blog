@@ -7,6 +7,6 @@
     "skipLibCheck": true,                   // 跳过库文件类型检查
     "forceConsistentCasingInFileNames": true // 强制文件名一致性
   },
-  "include": ["docs/.vitepress/**/*"],                  // 指定要编译的文件
+  "include": ["docs/.vitepress/**/*", "dist"],                  // 指定要编译的文件
   "exclude": ["node_modules", "**/*.spec.ts"] // 排除不需要编译的文件
 }
