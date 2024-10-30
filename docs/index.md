@@ -1,11 +1,24 @@
-<!--
- * @Author: lixiaofei05 lixiaofei05@baidu.com
- * @Date: 2024-10-29 14:54:27
- * @LastEditors: lixiaofei05 lixiaofei05@baidu.com
- * @LastEditTime: 2024-10-29 15:00:26
- * @FilePath: /oneweb/docs/index.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-# 欢迎来到我的文档
-
-这是一个使用 VitePress 创建的文档网站。
+---
+layout: home
+hero:
+  name: mimi's blog
+  text: 咪咪的博客
+  image:
+    src: "/mimi.jpeg"
+    alt: mimi
+    style: "border-radius: 50%; border: 5px solid white; width: 150px; height: 150px;"
+  actions:
+    - theme: brand
+      text: 现在开始
+      link: ./getting-started
+    - theme: alt
+      text: View on GitHub
+      link: https://github.com/Sophia-0212/mimi_blog
+features:
+- title: 🦾 Type Strong
+  details: Written in TypeScript
+- title: 🏆 Closest to the official
+  details: Organize in strict accordance with the official library source code, including directories and variable names
+- title: 😍 Easy to study
+  details: Super mini version, separated from the main process of source code library
+---

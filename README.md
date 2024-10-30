@@ -1,6 +1,3 @@
-# mimi_blog
-mimi's oneweb blog
-
 VitePress 是一个基于 Vite 的静态网站生成器，专注于构建文档网站。以下是如何使用 VitePress 的详细步骤：
 
 ## 1. 安装 VitePress
@@ -135,11 +132,6 @@ git add docs/.vitepress/dist
 git commit -m "Deploy to GitHub Pages"
 git push -u origin gh-pages
 ```
-
-
-## 总结
-
-VitePress 是一个轻量级的文档生成器，使用简单且快速。通过上述步骤，你可以快速搭建一个文档网站，并根据需要进行配置和扩展。希望这篇教程能帮助你顺利使用 VitePress！
 
 
 
