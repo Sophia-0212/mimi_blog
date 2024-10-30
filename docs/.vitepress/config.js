@@ -21,7 +21,7 @@ module.exports = {
             ],
         },
         footer: {
-            copyright: 'Copyright © 2022-present sunny-117',
+            copyright: 'Copyright © 2022-present Sophia-0212',
         },
     },
 }
