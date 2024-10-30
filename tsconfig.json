@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es6",                       // 目标 ECMAScript 版本
+    "module": "commonjs",                  // 模块系统
+    "strict": true,                         // 启用所有严格类型检查选项
+    "esModuleInterop": true,                // 允许与 ES6 模块的默认导入兼容
+    "skipLibCheck": true,                   // 跳过库文件类型检查
+    "forceConsistentCasingInFileNames": true // 强制文件名一致性
+  },
+  "include": ["docs/.vitepress/**/*"],                  // 指定要编译的文件
+  "exclude": ["node_modules", "**/*.spec.ts"] // 排除不需要编译的文件
+}
