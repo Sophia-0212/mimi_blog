@@ -1,6 +1,16 @@
 {
+  "name": "mimi_blog",
+  "version": "1.0.0",
+  "description": "mimi's oneweb blog",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "serve": "vitepress serve docs"
+  },
   "devDependencies": {
     "typescript": "^5.6.3",
     "vitepress": "^1.4.1"
-  }
+  },
+  "license": "MIT"
 }
