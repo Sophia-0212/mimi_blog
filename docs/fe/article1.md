@@ -31,7 +31,7 @@ FireFox 和 Chrome 使用不同的渲染引擎和 JavaScript 引擎：
 
 6. **数据存储 (Data Storage)**: 这是持久层。浏览器需要在本地存储各种数据，如cookies。HTML5引入了web storage，允许网页本地存储数据。
 
-![在这里插入图片描述](../public/image.png)
+![在这里插入图片描述](../public/image1.png)
 **交互流程**：
 
 1. 当您在地址栏中输入URL并按下Enter时，**用户界面**指示**浏览器引擎**加载请求的网页。

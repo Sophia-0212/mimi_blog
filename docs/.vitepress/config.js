@@ -25,10 +25,23 @@ module.exports = {
                 {
                     text: '浏览器',
                     link: '/fe/',
-                    collapsed: true,
+                    collapsed: false,
                     items: [
                         { text: '浏览器的组成', link: '/fe/article1' },
-                        { text: '文章 2', link: '/fe/article2' },
+                        { text: '浏览器工作流程-渲染', link: '/fe/article2' },
+                        { text: '浏览器的存储-缓存机制', link: '/fe/article3' },
+                        // { text: '前端安全性相关-攻击方式-预防-cookie设置属性', link: '/fe/article4' },
+                    ],
+                },
+                {
+                    text: '安全',
+                    link: '/fe/',
+                    collapsed: false,
+                    items: [
+                        // { text: '浏览器的组成', link: '/fe/article4' },
+                        // { text: '浏览器工作流程-渲染', link: '/fe/article2' },
+                        // { text: '浏览器的存储-缓存机制', link: '/fe/article3' },
+                        { text: '前端安全性相关-攻击方式-预防-cookie设置属性', link: '/fe/article4' },
                     ],
                 },
             ],
