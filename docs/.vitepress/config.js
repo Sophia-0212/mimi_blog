@@ -6,23 +6,35 @@ module.exports = {
         nav: [
             { text: '主页', link: '/' },
             { text: '指南', link: '/guide' },
-            { text: '博客', link: '/blog' },
+            { text: '前端面经', link: '/fe' },
         ],
         sidebar: {
             '/guide/': [
-                { text: '指南', link: '/guide/' },
-                { text: '指南1', link: '/guide/guide1' },
-                { text: '指南2', link: '/guide/guide2' },
-                { text: '指南3', link: '/guide/guide3' },
+                {
+                    text: '指南',
+                    link: '/guide/',
+                    collapsed: true, // 设置为 true 表示默认折叠
+                    items: [
+                        { text: '指南 1', link: '/guide/guide1' },
+                        { text: '指南 2', link: '/guide/guide2' },
+                        { text: '指南 3', link: '/guide/guide3' },
+                    ],
+                },
             ],
-            '/blog/': [
-                { text: '博客', link: '/blog/' },
-                { text: '文章1', link: '/blog/article1' },
-                { text: '文章2', link: '/blog/article2' },
+            '/fe/': [
+                {
+                    text: '浏览器',
+                    link: '/fe/',
+                    collapsed: true,
+                    items: [
+                        { text: '文章 1', link: '/fe/article1' },
+                        { text: '文章 2', link: '/fe/article2' },
+                    ],
+                },
             ],
         },
         footer: {
             copyright: 'Copyright © 2022-present Sophia-0212',
         },
     },
-}
+};
