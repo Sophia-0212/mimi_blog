@@ -1,3 +1,5 @@
+网站访问：https://sophia-0212.github.io/mimi_blog/
+
 VitePress 是一个基于 Vite 的静态网站生成器，专注于构建文档网站。以下是如何使用 VitePress 的详细步骤：
 
 ## 1. 安装 VitePress

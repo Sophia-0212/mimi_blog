@@ -27,7 +27,7 @@ module.exports = {
                     link: '/fe/',
                     collapsed: true,
                     items: [
-                        { text: '文章 1', link: '/fe/article1' },
+                        { text: '浏览器的组成', link: '/fe/article1' },
                         { text: '文章 2', link: '/fe/article2' },
                     ],
                 },
