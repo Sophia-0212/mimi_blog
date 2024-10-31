@@ -35,8 +35,6 @@
     margin-top: 2rem;
 }
 
-
-
 .feature-item.visible {
     transform: translateY(0); /* 移回原位置 */
 }
@@ -47,9 +45,7 @@
 }
 
 .feature-item-wrap {
-    
     width: 100%;
-    height: 100%;
     padding: 8px;
     min-height: 176px;
 }
@@ -58,6 +54,7 @@
     background: #f9f9f9;
     border-radius: 8px;
     padding: 24px;
+    height: 100%;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     color: #000;
     transform: translateY(20px); /* 初始状态向下偏移 */
