@@ -1,6 +1,7 @@
 module.exports = {
     title: "mimi's blog",
     description: '这是我的文档网站',
+    base: "/mimi_blog/",
     themeConfig: {
         nav: [
             { text: '主页', link: '/' },
