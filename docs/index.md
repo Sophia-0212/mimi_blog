@@ -3,7 +3,7 @@ layout: home
 hero:
   name: mimi's blog
   text: 咪咪的博客
-  tagline: 🚀 A mini front-end source code library
+  tagline: 🚀 Discover Front-End Wonders on Mimi's Blog.
   image:
     src: "/mimi.jpeg"
     alt: mimi
@@ -16,24 +16,23 @@ hero:
       text: View on GitHub
       link: https://github.com/Sophia-0212
 ---
-
 <div class="hero-features">
   <div class="feature-item-wrap">
     <div class="feature-item">
-      <div class="feature-name">🦾 Type Strong</div>
-      <div class="feature-contant">Written in TypeScript</div>
+      <div class="feature-name">📝 Diverse Content</div>
+      <div class="feature-contant">A wide range of topics covered.</div>
     </div>
   </div>
   <div class="feature-item-wrap">
     <div class="feature-item">
-      <div class="feature-name">🏆 Closest to the official</div>
-      <div class="feature-contant">Organize in strict accordance with the official library source code, including directories and variable names</div>
+      <div class="feature-name">💻 Frontend Knowledge</div>
+      <div class="feature-contant">Explore various frontend technologies and best practices.</div>
     </div>
   </div>
   <div class="feature-item-wrap">
     <div class="feature-item">
-      <div class="feature-name">😍 Easy to study</div>
-      <div class="feature-contant">Super mini version, separated from the main process of source code library</div>
+      <div class="feature-name">📅 Regular Updates</div>
+      <div class="feature-contant">New posts added frequently.</div>
     </div>
   </div>
 </div>
