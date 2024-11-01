@@ -3,6 +3,7 @@ layout: home
 hero:
   name: mimi's blog
   text: 咪咪的博客
+  tagline: 🚀 A mini front-end source code library
   image:
     src: "/mimi.jpeg"
     alt: mimi
@@ -10,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: 现在开始
-      link: ./blog
+      link: ./fe
     - theme: alt
       text: View on GitHub
       link: https://github.com/Sophia-0212
