@@ -69,6 +69,14 @@ module.exports = {
                         { text: 'npm包管理工具', link: '/fe/npm1' },
                     ],
                 },
+                {
+                    text: 'git',
+                    link: '/fe/',
+                    collapsed: false,
+                    items: [
+                        { text: 'git基础', link: '/fe/git1' },
+                    ],
+                },
             ],
         },
         footer: {
