@@ -46,12 +46,27 @@ module.exports = {
                 },
                 {
                     text: '前端优化',
-                    link: '/optimize/',
+                    link: '/fe/',
                     collapsed: false,
                     items: [
-                        // { text: '安全-Cookie相关与HttpOnly', link: '/fe/safety1' },
-                        // { text: '安全-三种攻击方式', link: '/fe/safety2' },
-                        // { text: '安全-内容安全策略CSP', link: '/fe/safety3' },
+                        { text: '简单优化', link: '/fe/opt1' },
+                    ],
+                },
+                {
+                    text: 'NodeJS',
+                    link: '/fe/',
+                    collapsed: false,
+                    items: [
+                        { text: 'NodeJS基础', link: '/fe/nodejs1' },
+                    ],
+                },
+                {
+                    text: '前端工程化',
+                    link: '/fe/',
+                    collapsed: false,
+                    items: [
+                        { text: 'Webpack基础', link: '/fe/webpack1' },
+                        { text: 'npm包管理工具', link: '/fe/npm1' },
                     ],
                 },
             ],
