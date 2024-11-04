@@ -3,7 +3,7 @@ layout: home
 hero:
   name: mimi's blog
   text: 咪咪的博客
-  tagline: 🚀 Discover Front-End Wonders on Mimi's Blog.
+  tagline: ✨ Unlock Front-End Secrets with Mimi's Blog.
   image:
     src: "/mimi.jpeg"
     alt: mimi
