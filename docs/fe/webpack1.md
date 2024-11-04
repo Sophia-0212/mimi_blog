@@ -1,3 +1,11 @@
+## 能说说webpack的作用吗?
+- 模块打包(静态资源拓展)。可以将不同模块的文件打包整合在一起，并且保证它们之间的引用正确，执行有序。利用打包我们就可以在开发的时候根据我们自己的业务自由划分文件模块，保证项目结构的清晰和可读性。
+- 编译兼容(翻译官loader)。在前端的“上古时期”，手写一堆浏览器兼容代码一直是令前端工程师头皮发麻的事情，而在今天这个问题被大大的弱化了，通过webpack的Loader机制，不仅仅可以帮助我们对代码做polyfill，还可以编译转换诸如.less, .vue, .jsx这类在浏览器无法识别的格式文件，让我们在开发的时候可以使用新特性和新语法做开发，提高开发效率。
+- 能力扩展(plugins)。通过webpack的Plugin机制，我们在实现模块化打包和编译兼容的基础上，可以进一步实现诸如按需加载，代码压缩等一系列功能，帮助我们进一步提高自动化程度，工程效率以及打包输出的质量。
+
+## 为什么要打包呢?
+逻辑多、文件多、项目的复杂度高了，所以要打包 例如: 让前端代码具有校验能力===>出现了ts css不好用===>出现了sass、less webpack可以解决这些问题
+
 ## HMR热更新实现的原理是什么？是基于Webpack-dev-server吗？
 
 **一、HMR（Hot Module Replacement，模块热替换）实现原理**
@@ -50,7 +58,7 @@ HMR 是基于 Webpack-dev-server 实现的，但不仅仅依赖于它。
 
 - eslint-loader：通过 ESLint 检查 JavaScript 代码。
 
-### 说一下 webpack 常用插件都有哪些？
+## 说一下 webpack 常用插件plugins都有哪些？
 以下是一些 Webpack 常用插件：
 
 **一、CleanWebpackPlugin**
@@ -88,6 +96,69 @@ HMR 是基于 Webpack-dev-server 实现的，但不仅仅依赖于它。
 作用：将指定的文件或目录复制到输出目录。
 
 当项目中有一些静态资源（如图片、字体文件等）不需要经过 Webpack 处理，但需要在输出目录中存在时，可以使用这个插件进行复制操作。
+
+
+## Loader 和 Plugin 不同点：
+
+**一、功能定位**
+
+1. **Loader（加载器）**：
+   - 主要用于转换特定类型的模块。例如，将 Sass 文件转换为 CSS、将 ES6+ 语法转换为 ES5 等。
+   - 专注于对源文件的内容进行处理，使其能够被 Webpack 识别和打包。
+
+2. **Plugin（插件）**：
+   - 用于扩展 Webpack 的功能。可以在 Webpack 构建过程的不同阶段执行各种任务，如打包优化、资源管理、生成报告等。
+   - 具有更广泛的作用范围，可以干预 Webpack 构建流程的多个环节。
+
+**二、工作方式**
+
+1. **Loader**：
+   - 接收输入的源文件内容作为参数，经过特定的转换处理后，返回转换后的结果。
+   - 通常是链式调用，一个文件可能经过多个 Loader 的依次处理。
+   - 例如，一个 JavaScript 文件可能先经过 Babel Loader 进行语法转换，然后再经过 ESLint Loader 进行代码检查。
+
+2. **Plugin**：
+   - 通过在 Webpack 构建过程中注册特定的事件钩子来实现功能。
+   - 当 Webpack 执行到相应的构建阶段时，会触发插件注册的事件，插件可以在此时执行自定义的逻辑。
+   - 例如，HtmlWebpackPlugin 在构建完成后生成 HTML 文件，并将打包后的资源注入到 HTML 中。
+
+**三、配置方式**
+
+1. **Loader**：
+   - 在 Webpack 配置文件的`module.rules`中进行配置。
+   - 指定文件的匹配规则（通常是文件扩展名）和要使用的 Loader。
+   - 例如：
+   ```javascript
+   module.exports = {
+     module: {
+       rules: [
+         {
+           test: /\.css$/,
+           use: ['style-loader', 'css-loader'],
+         },
+       ],
+     },
+   };
+   ```
+
+2. **Plugin**：
+   - 在 Webpack 配置文件的`plugins`数组中进行配置。
+   - 实例化插件对象，并将其添加到数组中。
+   - 例如：
+   ```javascript
+   const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+   module.exports = {
+     plugins: [
+       new HtmlWebpackPlugin({
+         template: './src/index.html',
+       }),
+     ],
+   };
+   ```
+
+## 是否写过Loader和Plugin？描述一下编写loader或plugin的思路？
+Loader像一个"翻译官"把读到的源文件内容转义成新的文件内容，并且每个Loader通过链式操作，将源文件一步步翻译成想要的样子。 编写Loader时要遵循单一原则，每个Loader只做一种"转义"工作。 每个Loader的拿到的是源文件内容（source），可以通过返回值的方式将处理后的内容输出，也可以调用this.callback()方法，将内容返回给webpack。 还可以通过 this.async()生成一个callback函数，再用这个callback将处理后的内容输出出去。 此外webpack还为开发者准备了开发loader的工具函数集——loader-utils。 相对于Loader而言，Plugin的编写就灵活了许多。 webpack在运行的生命周期中会广播出许多事件，Plugin 可以监听这些事件，在合适的时机通过 Webpack 提供的 API 改变输出结果。
 
 
 ## 使用 babel-loader 会有哪些问题，可以怎样优化？
@@ -352,3 +423,220 @@ babel 是一个 JS 编译器，主要用于将下一代的 JS 语言代码编译
 #### 放弃使用 webpack 的可能原因
  - **配置复杂**：对于小型项目或简单的需求，webpack 的配置可能显得过于复杂，需要花费较多时间来理解和设置。
  - **构建速度慢**：在处理大型项目时，构建速度可能较慢，影响开发效率。可以考虑使用其他工具来优化构建过程，或者在特定场景下选择更轻量级的构建工具。
+
+## 页应用（SPA）和多页应用（MPA）有什么区别？
+单页应用（SPA）和多页应用（MPA）主要有以下区别：
+
+**一、用户体验方面**
+
+1. **页面切换流畅度**：
+   - SPA：在页面切换时，通常不需要重新加载整个页面，而是通过动态更新页面的部分内容来实现。这使得页面切换非常流畅，用户感觉更加连贯。
+   - MPA：每次切换页面都需要重新加载整个页面，可能会出现短暂的白屏或加载时间，用户体验相对不够流畅。
+
+2. **响应速度**：
+   - SPA：由于大部分资源在首次加载后会被缓存，后续的页面切换和交互可以更快地响应，因为只需要加载少量的新数据。
+   - MPA：每次访问新页面都需要重新请求所有资源，响应速度可能会受到网络延迟和服务器处理时间的影响。
+
+**二、开发模式方面**
+
+1. **技术架构**：
+   - SPA：通常采用前端框架（如 Vue、React、Angular）构建，具有组件化、数据驱动的开发模式。整个应用只有一个 HTML 页面，通过 JavaScript 动态更新页面内容。
+   - MPA：可以使用传统的多页面开发方式，每个页面都是独立的 HTML 文件，页面之间的跳转通过链接实现。开发相对较为简单直接。
+
+2. **代码组织**：
+   - SPA：代码通常更加模块化和集中化，组件可以在不同的页面中复用。开发人员需要考虑状态管理、路由管理等方面的问题。
+   - MPA：每个页面的代码相对独立，代码组织相对简单。但可能会存在一些重复的代码，不利于代码的维护和复用。
+
+**三、性能优化方面**
+
+1. **资源加载**：
+   - SPA：可以通过懒加载等技术优化资源加载，只在需要的时候加载特定的模块或页面内容，减少初始加载时间。
+   - MPA：需要加载每个页面的全部资源，即使某些页面的资源在当前访问中可能并不需要。这可能导致初始加载时间较长，尤其是对于大型应用。
+
+2. **缓存策略**：
+   - SPA：可以更好地利用浏览器缓存，因为大部分资源在首次加载后会被缓存，后续访问可以直接从缓存中获取。
+   - MPA：每个页面都有自己独立的资源，缓存策略相对复杂，需要考虑不同页面之间的资源共享和更新问题。
+
+**四、SEO 方面**
+
+1. **搜索引擎优化**：
+   - SPA：由于页面内容是通过 JavaScript 动态生成的，搜索引擎爬虫可能难以完全抓取和索引页面内容。需要通过一些特殊的技术手段（如服务器端渲染、预渲染）来提高 SEO 效果。
+   - MPA：每个页面都是独立的 HTML 文件，搜索引擎爬虫可以更容易地抓取和索引页面内容，有利于 SEO。
+
+综上所述，单页应用和多页应用在用户体验、开发模式、性能优化和 SEO 等方面都存在一定的差异。开发人员需要根据项目的具体需求和特点选择合适的应用类型。
+
+## 怎么配置单页应用？怎么配置多页应用？
+
+以下是在 Webpack 中配置单页应用（SPA）和多页应用（MPA）的方法：
+
+**一、单页应用（SPA）配置**
+
+1. 安装必要的依赖
+   - 通常需要安装`webpack`、`webpack-cli`、`html-webpack-plugin`等。
+
+2. 配置文件（`webpack.config.js`）示例：
+   ```javascript
+   const path = require('path');
+   const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+   module.exports = {
+     entry: './src/index.js',
+     output: {
+       path: path.resolve(__dirname, 'dist'),
+       filename: 'bundle.js',
+     },
+     module: {
+       rules: [
+         // 配置各种 loader，如处理 JavaScript、CSS、图片等
+       ],
+     },
+     plugins: [
+       new HtmlWebpackPlugin({
+         template: './src/index.html',
+       }),
+     ],
+   };
+   ```
+   - `entry`指定应用的入口文件。
+   - `output`指定打包后的输出路径和文件名。
+   - `plugins`中的`HtmlWebpackPlugin`会根据模板生成一个 HTML 文件，并自动引入打包后的`bundle.js`。
+
+3. 开发服务器配置（可选）
+   - 可以使用`webpack-dev-server`来提供一个开发服务器，方便实时预览和调试。
+   ```javascript
+   module.exports = {
+     //...
+     devServer: {
+       contentBase: path.join(__dirname, 'dist'),
+       compress: true,
+       port: 9000,
+     },
+   };
+   ```
+
+**二、多页应用（MPA）配置**
+
+1. 安装必要的依赖
+   - 与单页应用类似，同时可能需要一些额外的插件来管理多个页面。
+
+2. 配置文件（`webpack.config.js`）示例：
+   ```javascript
+   const path = require('path');
+   const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+   module.exports = {
+     entry: {
+       page1: './src/page1.js',
+       page2: './src/page2.js',
+     },
+     output: {
+       path: path.resolve(__dirname, 'dist'),
+       filename: '[name].bundle.js',
+     },
+     module: {
+       rules: [
+         // 配置各种 loader
+       ],
+     },
+     plugins: [
+       new HtmlWebpackPlugin({
+         template: './src/page1.html',
+         filename: 'page1.html',
+         chunks: ['page1'],
+       }),
+       new HtmlWebpackPlugin({
+         template: './src/page2.html',
+         filename: 'page2.html',
+         chunks: ['page2'],
+       }),
+     ],
+   };
+   ```
+   - `entry`可以是一个对象，每个属性对应一个页面的入口文件。
+   - `output`中的`filename`使用占位符`[name]`，这样每个页面会生成不同的打包文件名。
+   - 对于每个页面，创建一个`HtmlWebpackPlugin`实例，指定不同的模板、文件名和对应的入口文件（通过`chunks`属性）。
+
+3. 开发服务器配置（可选）
+   - 与单页应用类似，可以配置`webpack-dev-server`来服务多个页面。
+
+总之，配置单页应用相对简单，主要围绕一个入口文件和一个 HTML 模板进行配置。而配置多页应用需要管理多个入口文件和 HTML 模板，并确保每个页面都能正确打包和引用对应的资源。
+
+
+
+
+## 在Webpack中实现按需加载
+
+### 一、Vue UI 组件库的按需加载
+为了快速开发前端项目，经常会引入现成的 UI 组件库如 ElementUI、iView 等。然而，这些组件库通常体积庞大，而在很多情况下，我们仅仅需要其中的少量几个组件，却将整个庞大的组件库打包到我们的源码中，造成了不必要的开销。
+
+很多组件库已经提供了现成的解决方案，如 Element 出品的 babel-plugin-component 和 Ant Design 出品的 babel-plugin-import。
+
+安装以上插件后，在`.babelrc`配置中或`babel-loader`的参数中进行设置，即可实现组件按需加载。
+
+例如：
+```javascript
+{
+  "presets": [["es2015", { "modules": false }]],
+  "plugins": [
+    [
+      "component",
+      {
+        "libraryName": "element-ui",
+        "styleLibraryName": "theme-chalk"
+      }
+    ]
+  ]
+}
+```
+
+### 二、单页应用的按需加载
+**一、问题背景**
+
+在单页应用中，随着业务的不断扩展，项目的功能会越来越多，代码量也会逐渐增大。如果将所有的代码都打包在一个文件中，在首次加载时就需要下载大量的代码，这会导致页面加载时间过长，影响用户体验。
+
+**二、解决方案 - 使用 import() 实现按需加载**
+
+1. `import()`函数
+   - `import()`是一个动态导入的语法，它允许在运行时动态地加载模块。与传统的静态导入（如`import module from './module'`）不同，`import()`返回一个 Promise 对象，当模块加载完成后，这个 Promise 对象会被解析为加载的模块。
+   - 例如，`const module = await import('./module')`，这里会在运行到这行代码时才去加载`./module`模块。
+
+2. Webpack 的处理
+   - Webpack 内置了对`import()`的解析。当在代码中使用`import()`时，Webpack 会将`import()`中引入的模块作为一个新的入口，并生成一个独立的 chunk（通常是一个单独的 JavaScript 文件）。
+   - 这样，在构建过程中，这些按需加载的模块不会被打包到初始的 bundle 文件中，只有在实际需要的时候才会被加载。
+
+3. 加载时机
+   - 当代码执行到`import()`语句时，浏览器会发起请求去加载对应的 chunk 文件。由于是按需加载，只有在特定的业务逻辑触发时才会加载这些额外的模块，从而减少了首次加载的代码量。
+
+4. Promise polyfill 的必要性
+   - 一些旧版本的浏览器可能不支持 Promise 对象。为了确保在这些浏览器中也能正常使用`import()`的按需加载功能，需要事先注入 Promise polyfill。
+   - Promise polyfill 是一个垫片库，它可以在不支持 Promise 的浏览器中模拟实现 Promise 的功能，使得代码能够正常运行。
+
+**三、示例代码**
+
+假设在一个单页应用中有一个大型的功能模块，只有在用户点击某个特定按钮时才需要加载：
+
+```javascript
+// 在需要的时候触发按需加载
+document.getElementById('button').addEventListener('click', async () => {
+  const module = await import('./largeModule');
+  // 使用加载的模块
+  module.doSomething();
+});
+```
+
+在这个例子中，只有当用户点击按钮时，才会去加载`./largeModule`模块，从而避免了在首次加载时就加载这个可能很大的模块。
+
+**四、优势**
+
+1. 提高首屏加载速度：减少首次加载的代码量，使得页面能够更快地显示给用户。
+2. 优化资源利用：只在需要的时候加载特定的模块，避免了不必要的资源浪费。
+3. 更好的可维护性：可以将功能模块进行拆分，使得代码结构更加清晰，易于维护和扩展。
+
+## 路由懒加载的原理
+路由懒加载也可以叫做路由组件懒加载，最常用的是通过import()来实现它。
+```javascript
+function load(component) {
+    return () => import(`views/${component}`)
+}
+```
+然后通过Webpack编译打包后，会把每个路由组件的代码分割成一一个js文件，初始化时不会加载这些js文件，只当激活路由组件才会去加载对应的js文件。
