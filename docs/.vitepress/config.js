@@ -50,6 +50,9 @@ module.exports = {
                     collapsed: false,
                     items: [
                         { text: '简单优化', link: '/fe/opt1' },
+                        { text: '十万数据列表优化', link: '/fe/opt2' },
+                        { text: '优化requestAnimationFrame取代定时器', link: '/fe/opt3' },
+                        { text: '大文件分片上传', link: '/fe/opt4' },
                     ],
                 },
                 {
